@@ -37,6 +37,7 @@ class FirstFragment : Fragment() {
         with(binding) {
             rvView.adapter = adapter
             rvView.layoutManager = LinearLayoutManager(context)
+
         }
 
         viewModel.bookLiveDataFromDataBase.observe(viewLifecycleOwner, {

@@ -27,6 +27,9 @@ class BookAdapter : RecyclerView.Adapter<BookAdapter.BookVH>() {
 
             with(binding) {
                 tituloEd.text = bookResponseItem.title
+                autorEd.text = bookResponseItem.author
+                autorEd2.text = bookResponseItem.country
+                autorEd3.text = bookResponseItem.language
 
                 Glide.with(imgViewBook)
                     .load(bookResponseItem.imageLink)
