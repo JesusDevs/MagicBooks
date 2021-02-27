@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="32dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgViewBook"
+
+        android:layout_marginRight="23dp"
+        android:layout_marginVertical="@dimen/cardview_default_radius"
+
+
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:layout_height="200dp"
+        android:layout_width="200dp" />
+
+    <TextView
+        android:id="@+id/tituloEd"
+        android:layout_width="109dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="250dp"
+        android:text="TextView" />
+</androidx.cardview.widget.CardView>
