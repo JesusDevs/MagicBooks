@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.magicbooks.pojo.BookDetail
 import com.example.magicbooks.pojo.BookResponseItem
 
 
-@Database(entities = [BookResponseItem::class], version = 1)
+@Database(entities = [BookResponseItem::class, BookDetail::class], version = 1)
 abstract class BookDataBase : RoomDatabase() {
 
     abstract fun getBookDao(): BookDao
@@ -23,9 +24,9 @@ abstract class BookDataBase : RoomDatabase() {
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    BookDataBase::class.java,
-                    "gameDao"
+                        context.applicationContext,
+                        BookDataBase::class.java,
+                        "bookDao"
                 )
                     .build()
                 INSTANCE = instance

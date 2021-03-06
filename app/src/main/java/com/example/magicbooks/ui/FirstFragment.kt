@@ -19,6 +19,7 @@ import com.example.magicbooks.databinding.FragmentFirstBinding
  */
 class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
+    private var bookId = 0
 
     private val viewModel: BookViewModel by activityViewModels()
 
@@ -40,9 +41,24 @@ class FirstFragment : Fragment() {
 
         }
 
+
+        viewModel.bookSelection.observe(viewLifecycleOwner, { id ->
+            bookId = id
+            Log.d("id", id.toString())
+            viewModel.getOneBookDetails(bookId).observe(viewLifecycleOwner, {
+
+                it?.let {
+
+                }
+
+            })
+
+
+        })
         viewModel.bookLiveDataFromDataBase.observe(viewLifecycleOwner, {
             it?.let {
                 Log.d("LISTADO", "$it")
+
                 adapter.update(it)
             }
         })
@@ -52,7 +68,7 @@ class FirstFragment : Fragment() {
             it.let {
                 val bundle = Bundle()
                 bundle.putString("id", it.id.toString())
-                // findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
             }
         })
         /* view.findViewById<Button>(R.id.button_first).setOnClickListener {

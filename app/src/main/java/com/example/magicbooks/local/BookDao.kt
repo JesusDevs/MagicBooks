@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.magicbooks.pojo.BookDetail
 import com.example.magicbooks.pojo.BookResponseItem
 
 @Dao
@@ -18,7 +19,12 @@ interface BookDao {
     @Query("SELECT * FROM book_free WHERE id = :id")
     fun getBookByID(id: String): LiveData<BookResponseItem>
 
-//metodo para obtener detalle de libros por id
-    // @Query("Select * from detail_book where id = :id")
-    //fun getGameDetails(id:String): LiveData<DetailsBookId>
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertOneBookDetails(detail: BookDetail)
+
+
+    @Query("SELECT * FROM  bookdetail WHERE id=:id")
+    fun getOneBookDetails(id: Int): LiveData<BookDetail>
+
 }
